@@ -89,9 +89,10 @@
 					<div class="col-md-12">
 						<div class="block">
 							<h1>Desktops Rental Website</h1>
-							<h2>Whatever your business,Whateveryour budget<br> We'll help you to find the right workspace.</h2>
+							<h2>Whatever your business,Whateveryour budget
+                                <br> We'll help you to find the right workspace.</h2>
 							<div class="buttons">
-								<a href="{{ route('login') }}" class="btn btn-learn">Login</a>
+								<a href="{{ route('login', ['type' => 'customer']) }}" class="btn btn-learn">Login</a>
 								<a href="#" class="btn btn-learn">Register</a>
 							</div>
 						</div>

@@ -1,56 +1,194 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<x-head />
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+<body>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <!-- preloader area end -->
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+    <!-- login area start -->
+    @if ($type == 'customer')
+        <div class="login-area login-s2">
+            <div class="container">
+                <div class="login-box ptb--100">
+                    <form action="{{ route('login', ['type' => 'customer']) }}" method="POST">
+                        @csrf
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
+                        <div class="login-form-head">
+                            <h4>Sign In</h4>
+                            <p>Hello there, Sign in to managing your Account 😎</p>
+                        </div>
+                        <div class="login-form-body text-center">
+                            <a href="{{ route('login', ['type' => 'owner']) }}">
+                                <button type="button"
+                                    class="btn btn-outline-secondary @if ($type == 'owner') active @endif">
+                                    Owner
+                                </button>
+                            </a>
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                            <a href="{{ route('login', ['type' => 'customer']) }}">
+                                <button type="button"
+                                    class="btn btn-outline-secondary @if ($type == 'customer') active @endif">Customer</button>
+                            </a>
+                        </div>
+                        <div class="login-form-body">
+
+                            {{-- Type --}}
+                            <input type="hidden" name="type" value="{{ $type }}">
+
+                            {{-- Email Field --}}
+                            <div class="form-gp">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" id="exampleInputEmail1" name="email">
+                                <i class="ti-email"></i>
+                                <div class="text-danger"></div>
+                            </div>
+
+                            {{-- Password Field --}}
+                            <div class="form-gp">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" id="exampleInputPassword1" name="password">
+                                <i class="ti-lock"></i>
+                                <div class="text-danger"></div>
+                            </div>
+
+                            <div class="row mb-4 rmber-area">
+                                {{-- Link To Remember Me --}}
+                                <div class="col-6">
+                                    <div class="custom-control custom-checkbox mr-sm-2">
+                                        <input type="checkbox" class="custom-control-input"
+                                            id="customControlAutosizing">
+                                        <label class="custom-control-label" for="customControlAutosizing">Remember
+                                            Me</label>
+                                    </div>
+                                </div>
+
+                                {{-- Link To Forget Password --}}
+                                <div class="col-6 text-right">
+                                    <a href="#">Forgot Password?</a>
+                                </div>
+
+                            </div>
+
+                            <div class="submit-btn-area">
+                                <button id="form_submit" type="submit">
+                                    Submit
+                                    <i class="ti-arrow-right"></i>
+                                </button>
+                            </div>
+
+                            {{-- Link To Register --}}
+                            <div class="form-footer text-center mt-5">
+                                <p class="text-muted">
+                                    Don't have an account?
+                                    <a href="customer-Register.html">
+                                        Sign up
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
+        </div>
+    @endif
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+    @if ($type == 'owner')
+        <div class="login-area login-s2">
+            <div class="container">
+                <div class="login-box ptb--100">
+                    <form action="{{ route('login', ['type' => 'owner']) }}" method="POST">
+                        @csrf
 
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
+                        <div class="login-form-head">
+                            <h4>Sign In</h4>
+                            <p>Hello there, Sign in to managing your Account 😎</p>
+                        </div>
+                        <div class="login-form-body text-center">
+                            <a href="{{ route('login', ['type' => 'owner']) }}">
+                                <button type="button"
+                                    class="btn btn-outline-secondary @if ($type == 'owner') active @endif">Owner</button>
+                            </a>
+
+                            <a href="{{ route('login', ['type' => 'customer']) }}">
+                                <button type="button"
+                                    class="btn btn-outline-secondary @if ($type == 'customer') active @endif">Customer</button>
+                            </a>
+                        </div>
+                        <div class="login-form-body">
+
+                            {{-- Type --}}
+                            <input type="hidden" name="type" value="{{ $type }}">
+
+                            {{-- Email Field --}}
+                            <div class="form-gp">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" id="Email" name="email">
+                                <i class="ti-email"></i>
+                                <div class="text-danger"></div>
+                            </div>
+
+                            {{-- Password Field --}}
+                            <div class="form-gp">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" id="Password" name="password">
+                                <i class="ti-lock"></i>
+                                <div class="text-danger"></div>
+                            </div>
+
+                            <div class="row mb-4 rmber-area">
+                                {{-- Link To Remember Me --}}
+                                <div class="col-6">
+                                    <div class="custom-control custom-checkbox mr-sm-2">
+                                        <input type="checkbox" class="custom-control-input"
+                                            id="customControlAutosizing">
+                                        <label class="custom-control-label" for="customControlAutosizing">Remember
+                                            Me</label>
+                                    </div>
+                                </div>
+
+                                {{-- Link To Forget Password --}}
+                                <div class="col-6 text-right">
+                                    <a href="#">Forgot Password?</a>
+                                </div>
+
+                            </div>
+
+                            <div class="submit-btn-area">
+                                <button id="form_submit" type="submit">
+                                    Submit
+                                    <i class="ti-arrow-right"></i>
+                                </button>
+                            </div>
+
+                            {{-- Link To Register --}}
+                            <div class="form-footer text-center mt-5">
+                                <p class="text-muted">
+                                    Don't have an account?
+                                    <a href="customer-Register.html">
+                                        Sign up
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
+        </div>
+    @endif
+    <!-- login area end -->
 
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
+    <x-script />
+</body>
 
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+</html>

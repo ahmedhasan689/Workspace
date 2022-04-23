@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Session;
+use App\Http\Requests\Auth\LoginRequest;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -15,9 +16,10 @@ class AuthenticatedSessionController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create($type = 'customer')
     {
-        return view('auth.login');
+        return view('auth.login', compact('type'));
+
     }
 
     /**
@@ -28,11 +30,35 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $request->authenticate();
 
-        $request->session()->regenerate();
+        if ($request->type == 'customer') {
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+            $guardName = 'web';
+
+        } elseif ($request->type == 'owner') {
+
+            $guardName = 'owner';
+
+        }
+
+        if ( Auth::guard($guardName)->attempt([ 'email' => $request->email, 'password' => $request->password])) {
+
+            Session::put('guardName', $guardName);
+
+            if ($request->type == 'customer') {
+
+                return redirect()->intended(RouteServiceProvider::CUSTOMER);
+
+            } elseif ($request->type == 'owner') {
+
+                return redirect()->intended(RouteServiceProvider::OWNER);
+
+            }
+        }else{
+            toastr()->error('There Is An Error !');
+            return redirect()->back();
+        }
+
     }
 
     /**
@@ -43,7 +69,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        Auth::guard('web')->logout();
+        Auth::guard(session('guardName'))->logout();
 
         $request->session()->invalidate();
 

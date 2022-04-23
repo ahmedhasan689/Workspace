@@ -24,6 +24,4 @@ class Owner extends Authenticatable
         'phone_number',
     ];
 
-
-
 }
