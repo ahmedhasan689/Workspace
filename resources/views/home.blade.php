@@ -93,7 +93,7 @@
                                 <br> We'll help you to find the right workspace.</h2>
 							<div class="buttons">
 								<a href="{{ route('login', ['type' => 'customer']) }}" class="btn btn-learn">Login</a>
-								<a href="#" class="btn btn-learn">Register</a>
+								<a href="{{ route('register', ['type' => 'customer']) }}" class="btn btn-learn">Register</a>
 							</div>
 						</div>
 					</div>
@@ -153,19 +153,28 @@
 							<h2>Rental Type</h2>
 						</div>
 						<div id="blog-post" class="owl-carousel">
-							<div>
+                            @foreach ($workspaces as $workspace)
+                            <div>
 								<div class="block">
-									<img src="{{ asset('front/img/blog/blog-4.jpg') }}" alt="" class="img-responsive">
+									<img src="{{ asset('gallery'). '/' . $workspace->gallery[0] }}" alt="" class="img-responsive">
 									<div class="content">
-										<h4><a href="blog.html">Dedicated Desk</a></h4>
+										<h4>
+                                            <a href="blog.html">
+                                                {{ $workspace->name }}
+                                            </a>
+                                        </h4>
 										<p>
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ex itaque repudiandae nihil qui debitis atque necessitatibus aliquam, consequuntur autem!
+                                            {{ $workspace->description }}
 										</p>
-										<a href="blog.html" class="btn btn-read">Show more</a>
-
+										<a href="blog.html" class="btn btn-read">
+                                            Show more
+                                        </a>
 									</div>
 								</div>
 							</div>
+                            @endforeach
+
+
 							<div>
 								<div class="block">
 									<img src="{{ asset('front/img/blog/blog-2.jpg') }}" alt="" class="img-responsive">
@@ -179,6 +188,7 @@
 									</div>
 								</div>
 							</div>
+
 							<div>
 								<div class="block">
 									<img src="{{ asset('front/img/blog/blog-3.jpg') }}" alt="" class="img-responsive">

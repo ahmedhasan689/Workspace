@@ -30,23 +30,23 @@ class OwnerSeeder extends Seeder
     public function run()
     {
         $this->owner->insert([
-            'first_name' => 'Ahmed',
-            'last_name' => 'Hasan',
+            'full_name' => 'Ahmed Hasan',
             'company_name' => 'Tech Sector',
             'email' => 'ahmed@gmail.com',
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make(12345678),
             'phone_number' => '0595959591',
+            'city_id' => '1',
         ]);
 
         $this->owner->insert([
-            'first_name' => 'Yazan',
-            'last_name' => 'Ibrahim',
+            'full_name' => 'Yazan Ibrahim',
             'company_name' => 'Unit One',
             'email' => 'yazan@gmail.com',
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make(12345678),
             'phone_number' => '0595959592',
+            'city_id' => '2',
         ]);
     }
 }

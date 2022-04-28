@@ -15,13 +15,24 @@ class Owner extends Authenticatable
 
     protected $fillable = [
         'id',
-        'first_name',
-        'last_name',
+        'full_name',
         'company_name',
         'email',
         'email_verified_at',
         'password',
         'phone_number',
+        'avatar',
+        'city_id',
     ];
+
+    // Relation With Cith
+    public function city() {
+        return $this->belongsTo(City::class);
+    }
+
+    // Relation With Workspace
+    public function workspaces(){
+        return $this->hasMany(Workspace::class);
+    }
 
 }

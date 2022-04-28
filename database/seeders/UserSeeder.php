@@ -29,21 +29,21 @@ class UserSeeder extends Seeder
     public function run()
     {
         $this->user->insert([
-            'first_name' => 'Omar',
-            'last_name' => 'Mohammed',
+            'full_name' => 'Omar Mohammed',
             'email' => 'Omar@gmail.com',
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make(12345678),
             'phone_number' => '0595959593',
+            'city_id' => '3',
         ]);
 
         $this->user->insert([
-            'first_name' => 'Anas',
-            'last_name' => 'Salah',
+            'full_name' => 'Anas Salah',
             'email' => 'Anas@gmail.com',
             'email_verified_at' => Carbon::now(),
             'password' => Hash::make(12345678),
             'phone_number' => '0595959594',
+            'city_id' => '1',
         ]);
     }
 }

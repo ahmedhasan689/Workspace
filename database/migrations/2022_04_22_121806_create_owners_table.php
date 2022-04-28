@@ -15,13 +15,17 @@ class CreateOwnersTable extends Migration
     {
         Schema::create('owners', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('full_name');
             $table->string('company_name')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phone_number')->unique();
+            $table->string('avatar')->nullable();
+
+            // Foreign Key
+            $table->foreignId('city_id')->constrained('cities')->nullOnDelete();
+
             $table->rememberToken();
             $table->timestamps();
         });

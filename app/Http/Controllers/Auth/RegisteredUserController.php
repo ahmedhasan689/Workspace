@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
+use App\Models\Owner;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+use Illuminate\Auth\Events\Registered;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Session;
 
 class RegisteredUserController extends Controller
 {
@@ -18,9 +20,11 @@ class RegisteredUserController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create($type)
     {
-        return view('auth.register');
+        return view('auth.register', [
+            'type' => $type,
+        ]);
     }
 
     /**
@@ -33,22 +37,57 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        if ($request->type == 'customer') {
+            $request->validate([
+                'full_name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'phone_number' => ['required', 'numeric', 'unique:users'],
+                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            ]);
 
-        event(new Registered($user));
+            $user = User::create([
+                'full_name' => $request->full_name,
+                'email' => $request->email,
+                'phone_number' => $request->phone_number,
+                'password' => Hash::make($request->password),
+                'city_id' => 1,
+            ]);
 
-        Auth::login($user);
+            event(new Registered($user));
 
-        return redirect(RouteServiceProvider::HOME);
+            Session::put('guardName', $request->type);
+
+            Auth::guard('guardName')->login($user);
+
+            return redirect(RouteServiceProvider::CUSTOMER);
+
+        }elseif ($request->type == 'owner'){
+            $request->validate([
+                'full_name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:owners'],
+                'company_name' => ['required', 'string'],
+                'phone_number' => ['required', 'numeric', 'unique:owners'],
+                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            ]);
+
+            $owner = Owner::create([
+                'full_name' => $request->full_name,
+                'email' => $request->email,
+                'company_name' => $request->company_name,
+                'phone_number' => $request->phone_number,
+                'password' => Hash::make($request->password),
+                'city_id' => 1,
+            ]);
+
+            Session::put('guardName', $request->type);
+
+            event(new Registered($owner));
+
+            Auth::guard(session('guardName'))->login($owner);
+
+            return redirect(RouteServiceProvider::OWNER);
+        }
+
     }
 }

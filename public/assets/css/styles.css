@@ -8,10 +8,10 @@
     Version: 1.0
 
 ----------------------------------------------
-    
+
     CSS INDEX
     ===================
-  
+
     1. Core Css
     2. Dashboard One
         2.1 Sidebar Menu
@@ -795,6 +795,17 @@ ul.breadcrumbs {
     font-weight: 500;
     padding: 4px 120px;
     padding-left: 25px;
+}
+
+.user-profile .dropdown-menu button {
+    font-size: 14px;
+    color: #8a8a8a;
+    letter-spacing: 0;
+    font-weight: 520;
+    padding: 4px 120px;
+    padding-left: 25px;
+    background-color: transparent;
+    border-width: 0px;
 }
 
 .user-profile .dropdown-menu a:hover {
