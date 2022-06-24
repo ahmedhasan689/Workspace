@@ -23,8 +23,8 @@ class City extends Model
         return $this->hasMany(USer::class);
     }
 
-    // Relation With Worksapce
-    public function workspcaes(){
+    // Relation With Workspace
+    public function workspaces(){
         return $this->hasMany(Workspace::class);
     }
 }

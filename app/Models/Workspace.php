@@ -15,11 +15,11 @@ class Workspace extends Model
         'address',
         'gallery',
         'price',
-        'rating',
+        'address',
+        'type',
         'status',
         'features',
         'owner_id',
-        'user_id',
         'city_id',
     ];
 

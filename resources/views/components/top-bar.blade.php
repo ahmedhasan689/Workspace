@@ -19,7 +19,7 @@
         </div>
         <div class="col-sm-6 clearfix">
             <div class="user-profile pull-right">
-                <img class="avatar user-thumb" src="{{ asset('assets/images/author/avatar.png') }}" alt="avatar">
+                <img class="avatar user-thumb" src="{{ Auth::guard(session('guardName'))->user()->image }}" alt="avatar">
                 <h4 class="user-name dropdown-toggle" data-toggle="dropdown">
 
                     {{ Auth::guard(session('guardName'))->user()->full_name }}
@@ -31,7 +31,7 @@
 
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit">
+                        <button type="submit" style="border: none; background-color: transparent; color: #8a8a8a; margin-left: 25px;">
                             Log Out
                         </button>
                     </form>

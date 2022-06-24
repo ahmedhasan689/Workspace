@@ -60,15 +60,19 @@
                                                         </li>
 
                                                         <li class="mr-3">
-                                                            <a href="#" class="text-secondary">
+                                                            <a href="{{ route('workspace.edit', ['id' => $workspace->id]) }}" class="text-secondary">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
                                                         </li>
 
                                                         <li class="mr-3">
-                                                            <a href="#" class="text-danger">
-                                                                <i class="ti-trash"></i>
-                                                            </a>
+                                                            <form action="{{ route('workspace.delete', ['id'=> $workspace->id]) }}" method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="text-danger" style="border-width: 0px; background-color:transparent">
+                                                                    <i class="ti-trash"></i>
+                                                                </button>
+                                                            </form>
                                                         </li>
 
                                                     </ul>

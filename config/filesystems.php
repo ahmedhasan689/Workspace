@@ -60,6 +60,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'avatar' => [
+            'driver' => 'local',
+            'root' => public_path('user_avatar'),
+            'url' => env('APP_URL').'/user_avatar',
+            'visibility' => 'public',
+        ],
+
     ],
 
     /*

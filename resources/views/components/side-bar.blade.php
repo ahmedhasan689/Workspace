@@ -17,7 +17,7 @@
                             </span>
                         </a>
                     </li>
-                    <li @if (Request::is('owner/workspace')) class="active" @endif>
+                    <li @if (Request::is('owner/workspaces')) class="active" @endif>
                         <a href="{{ route('workspace.index') }}" aria-expanded="true">
                             <i class="ti-list-ol"></i>
                             <span>
@@ -25,7 +25,7 @@
                             </span>
                         </a>
                     </li>
-                    <li @if (Request::is('owner/workspace/create')) class="active" @endif>
+                    <li @if (Request::is('owner/workspaces/create')) class="active" @endif>
                         <a href="{{ route('workspace.create') }}" aria-expanded="true">
                             <i class="ti-plus"></i>
                             <span>
@@ -33,8 +33,8 @@
                             </span>
                         </a>
                     </li>
-                    <li>
-                        <a href="javascript:void(0)" aria-expanded="true">
+                    <li >
+                        <a href="#" aria-expanded="true">
                             <i class="ti-calendar"></i>
                             <span>
                                 Tenants List
@@ -49,8 +49,8 @@
                             </span>
                         </a>
                     </li>
-                    <li>
-                        <a href="javascript:void(0)" aria-expanded="true">
+                    <li @if (Request::is('owner/settings')) class="active" @endif>
+                        <a href="{{ route('setting.index') }}" aria-expanded="true">
                             <i class="ti-settings"></i>
                             <span>
                                 settings

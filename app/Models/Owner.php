@@ -17,6 +17,7 @@ class Owner extends Authenticatable
         'id',
         'full_name',
         'company_name',
+        'company_address',
         'email',
         'email_verified_at',
         'password',
@@ -33,6 +34,20 @@ class Owner extends Authenticatable
     // Relation With Workspace
     public function workspaces(){
         return $this->hasMany(Workspace::class);
+    }
+
+    // Accessors For avatar
+    public function getImageAttribute()
+    {
+        if (!$this->avatar) {
+            return asset('front/img/default_avatar.jpg');
+        }
+
+        if (stripos($this->avatar, 'http') === 0) {
+            return $this->avatar;
+        }
+
+        return asset('user_avatar' . '/' . $this->avatar);
     }
 
 }

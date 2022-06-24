@@ -22,12 +22,13 @@ class User extends Authenticatable
         'email',
         'password',
         'phone_number',
-        'avater',
+        'avatar',
         'city_id',
     ];
 
     // Relation With Cith
-    public function city() {
+    public function city()
+    {
         return $this->belongsTo(City::class);
     }
 
@@ -49,4 +50,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Accessors For avatar
+    public function getImageAttribute()
+    {
+        if (!$this->avatar) {
+            return asset('front/img/default_avatar.jpg');
+        }
+
+        if (stripos($this->avatar, 'http') === 0) {
+            return $this->avatar;
+        }
+
+        return asset('user_avatar' . '/' . $this->avatar);
+    }
 }

@@ -14,7 +14,7 @@
                     <div class="seo-fact sbg1">
                         <div class="p-4 d-flex justify-content-between align-items-center">
                             <div class="seofct-icon"><i class="ti-layers-alt"></i> Num Of Desktop</div>
-                            <h2>120</h2>
+                            <h2>{{ count($workspaces) }}</h2>
                         </div>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                     <div class="seo-fact sbg2">
                         <div class="p-4 d-flex justify-content-between align-items-center">
                             <div class="seofct-icon"><i class="ti-check"></i> booked </div>
-                            <h2>75</h2>
+                            <h2>{{ count($workspaces->where('status', 'booked')) }}</h2>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                     <div class="seo-fact sbg3">
                         <div class="p-4 d-flex justify-content-between align-items-center">
                             <div class="seofct-icon"><i class="ti-bookmark-alt"></i> available </div>
-                            <h2>45</h2>
+                            <h2>{{ count($workspaces->where('status', 'Available')) }}</h2>
                         </div>
                     </div>
                 </div>

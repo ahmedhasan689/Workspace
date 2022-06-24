@@ -1,9 +1,13 @@
 <?php
 
+use App\Http\Controllers\Customer\CustomerSettingsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Customer\CustomerController;
+use App\Http\Controllers\Customer\CustomerWorkspaceController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\Owner\OwnerController;
+use App\Http\Controllers\Owner\SettingsController;
 use App\Http\Controllers\Owner\WorkspacesController;
 
 /*
@@ -37,14 +41,29 @@ Route::namespace('/Owner')
 
         // Start Workspace Routes
         Route::group([
-            'prefix' => '/workspace',
+            'prefix' => '/workspaces',
             'as' => 'workspace.',
         ], function() {
             Route::get('/', [WorkspacesController::class, 'index'])->name('index');
             Route::get('/create', [WorkspacesController::class, 'create'])->name('create');
             Route::post('/', [WorkspacesController::class, 'store'])->name('store');
+            Route::get('/{id}/edit', [WorkspacesController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [WorkspacesController::class, 'update'])->name('update');
+            Route::delete('/{id}', [WorkspacesController::class, 'destroy'])->name('delete');
         });
         // End Workspace Routes
+
+        // Start Setting Routes [Owner]
+        Route::group([
+            'prefix' => '/settings',
+            'as' => 'setting.'
+        ], function() {
+            Route::get('/', [SettingsController::class, 'index'])->name('index');
+            Route::post('/', [SettingsController::class, 'store'])->name('store');
+            Route::get('/{id}/edit', [SettingsController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [SettingsController::class, 'update'])->name('update');
+        });
+        // End Setting Routes [Owner]
 
     });
 
@@ -58,11 +77,22 @@ Route::namespace('/Customer')
     Route::get('/dashboard', [CustomerController::class, 'index'])->name('customer.home');
     // End Customer Controller [Homepage]
 
+    // Start Customer Workspace
     Route::group([
-        'prefix' => 'customer',
-        'as' => 'customer.',
+        'prefix' => 'my-workspaces',
+        'as' => 'my-workspaces.',
     ], function() {
-        // Another Routes
+        Route::get('/', [CustomerWorkspaceController::class, 'index'])->name('index');
     });
+    // End Customer Workspace
 
+    // Start Customer Workspace
+    Route::group([
+        'prefix' => '/settings',
+        'as' => 'customer.setting.',
+    ], function() {
+        Route::get('/edit', [CustomerSettingsController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [CustomerSettingsController::class, 'update'])->name('update');
+    });
+    // End Customer Workspace
 });

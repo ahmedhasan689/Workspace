@@ -57,6 +57,12 @@
                             </select>
                         </div>
 
+                        {{-- Address --}}
+                        <div class="form-group">
+                            <label for="example-text-input" class="col-form-label">Address</label>
+                            <input class="form-control" name="address" type="text" placeholder="Address Here" id="example-text-input">
+                        </div>
+
                         {{-- Workspace Type --}}
                         <div class="form-group">
                             <label class="col-form-label">type</label>
@@ -68,6 +74,8 @@
                                 <option>Skype Room</option>
                             </select>
                         </div>
+
+
 
                         {{-- Workspace Price --}}
                         <div class="input-group">
@@ -87,7 +95,8 @@
                                 <span class="input-group-text">Upload</span>
                             </div>
                             <div class="custom-file">
-                                <input type="file" name="gallery[]" class="custom-file-input" id="inputGroupFile01" multiple>
+                                <input type="file" name="gallery[]" class="custom-file-input" id="inputGroupFile01"
+                                    multiple>
                                 <label class="custom-file-label" for="inputGroupFile01">Desktop Image</label>
                             </div>
                         </div>
@@ -96,12 +105,12 @@
                         <div>
                             <label class="col-form-label">Available features :</label>
 
-                            @foreach (config('features') as $key => $value)
+                            @foreach ($features as $feature)
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" name="features[]"
-                                        id="{{ $key }}" value="{{ $value }}">
-                                    <label class="custom-control-label" for="{{ $key }}">
-                                        {{ $value }}
+                                        id="{{ $feature->id }}" value="{{ $feature->feature_name }}">
+                                    <label class="custom-control-label" for="{{ $feature->id }}">
+                                        {{ $feature->feature_name }}
                                     </label>
                                 </div>
                             @endforeach

@@ -179,7 +179,9 @@
 								<div class="block">
 									<img src="{{ asset('front/img/blog/blog-2.jpg') }}" alt="" class="img-responsive">
 									<div class="content">
-										<h4><a href="blog.html">Standard office</a></h4>
+										<h4>
+                                            <a href="blog.html">Standard office</a>
+                                        </h4>
 										<p>
 											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ex itaque repudiandae nihil qui debitis atque necessitatibus aliquam, consequuntur autem!
 										</p>
