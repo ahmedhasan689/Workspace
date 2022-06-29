@@ -8,10 +8,10 @@
     Version: 1.0
 
 ----------------------------------------------
-    
+
     CSS INDEX
     ===================
-  
+
     1. Core Css
     2. Dashboard One
         2.1 Sidebar Menu
@@ -2274,7 +2274,8 @@ table.dataTable thead td {
     color: #444;
 }
 
-.invoice-buttons a {
+.invoice-buttons button {
+    border: none;
     display: inline-block;
     font-size: 15px;
     color: #fff;

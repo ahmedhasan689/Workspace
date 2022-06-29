@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Customer\CustomerSettingsController;
+use App\Http\Controllers\Owner\TainentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Customer\CustomerWorkspaceController;
@@ -83,6 +84,8 @@ Route::namespace('/Customer')
         'as' => 'my-workspaces.',
     ], function() {
         Route::get('/', [CustomerWorkspaceController::class, 'index'])->name('index');
+        Route::get('/{id}', [CustomerWorkspaceController::class, 'show'])->name('show');
+        Route::post('/getDays', [CustomerWorkspaceController::class, 'getDays'])->name('getDays');
     });
     // End Customer Workspace
 
@@ -96,3 +99,17 @@ Route::namespace('/Customer')
     });
     // End Customer Workspace
 });
+
+// Start Tainents Route
+Route::group([
+    'prefix' => '/tainent',
+    'as' => 'tainent.',
+], function() {
+    Route::get('/', [TainentController::class, 'index'])->name('index');
+    Route::get('/create', [TainentController::class, 'create'])->name('create');
+    Route::post('/', [TainentController::class, 'store'])->name('store');
+    Route::get('/{id}/edit', [TainentController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [TainentController::class, 'update'])->name('update');
+    Route::delete('/{id}', [TainentController::class, 'destroy'])->name('delete');
+});
+// End Tainents Route

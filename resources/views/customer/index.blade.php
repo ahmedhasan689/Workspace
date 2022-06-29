@@ -11,7 +11,7 @@
             @foreach( $workspaces as $workspace )
                 <div class="col-lg-4 col-md-6 mt-5">
                 <div class="card card-bordered">
-                    <img class="card-img-top img-fluid" src="{{ asset('assets/images/card/card-img1.jpg') }}" alt="image">
+                    <img class="card-img-top img-fluid" src="{{ asset('gallery') . '/' . $workspace->gallery[0] }}" alt="image">
                     <div class="card-body">
                         <h5 class="title">
                             {{ $workspace->name }}
@@ -23,7 +23,9 @@
                         <p class="card-text">
                             {{ $workspace->address  }}
                         </p>
-                        <a href="#" class="btn btn-primary">Rent</a>
+                        <a href="{{ route('my-workspaces.show', ['id' => $workspace->id]) }}" class="btn btn-primary">
+                            Rent
+                        </a>
                     </div>
                 </div>
             </div>

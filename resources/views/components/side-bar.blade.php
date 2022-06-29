@@ -33,8 +33,8 @@
                             </span>
                         </a>
                     </li>
-                    <li >
-                        <a href="#" aria-expanded="true">
+                    <li @if (Request::is('tainent/index')) class="active" @endif>
+                        <a href="{{ route('tainent.index') }}" aria-expanded="true">
                             <i class="ti-calendar"></i>
                             <span>
                                 Tenants List

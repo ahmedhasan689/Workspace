@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\customer;
+namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tainant;
 use App\Models\Workspace;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CustomerWorkspaceController extends Controller
+class TainentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +18,8 @@ class CustomerWorkspaceController extends Controller
      */
     public function index()
     {
-        $tainents = Tainant::where('user_id', Auth::guard(session('guardName'))->user()->id)->get();
-        return view('customer.workspace.index', compact('tainents'));
+        $tainents = Tainant::where('owner_id', Auth::guard(session('guardName'))->user()->id)->get();
+        return view('owner.tainent.index',compact('tainents'));
     }
 
     /**
@@ -39,7 +40,28 @@ class CustomerWorkspaceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $workspace = Workspace::where('id', $request->workspace_id)->first();
+
+        $start = Carbon::createFromFormat('Y-m-d', $request->start_date);
+        $end = Carbon::createFromFormat('Y-m-d', $request->end_date);
+        $diff_in_days = $start->diffInDays($end);
+        Tainant::create([
+            'workspace_id' => $request->workspace_id,
+            'owner_id' => $request->owner_id,
+            'user_id' => Auth::guard(session('guardName'))->user()->id,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'total' => $diff_in_days * $workspace->price,
+            'per_day' => $workspace->price,
+        ]);
+
+        $workspace->update([
+            'status' => 'booked',
+        ]);
+
+        toastr()->success('Done !');
+
+        return view('customer.workspace.index');
     }
 
     /**
@@ -50,8 +72,7 @@ class CustomerWorkspaceController extends Controller
      */
     public function show($id)
     {
-        $workspace = Workspace::findOrFail($id);
-        return view('customer.show', compact('workspace'));
+        //
     }
 
     /**
@@ -86,12 +107,5 @@ class CustomerWorkspaceController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function getDays(Request $request)
-    {
-        return response()->json([
-            'days' => $request->days,
-        ]);
     }
 }
