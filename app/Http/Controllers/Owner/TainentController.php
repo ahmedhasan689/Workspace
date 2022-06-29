@@ -61,7 +61,8 @@ class TainentController extends Controller
 
         toastr()->success('Done !');
 
-        return view('customer.workspace.index');
+        $tainents = Tainant::where('user_id', Auth::guard(session('guardName'))->user()->id)->get();
+        return view('customer.workspace.index', compact('tainents'));
     }
 
     /**
