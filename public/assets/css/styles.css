@@ -2289,6 +2289,21 @@ table.dataTable thead td {
     margin-left: 6px;
 }
 
+.invoice-buttons a {
+    border: none;
+    display: inline-block;
+    font-size: 15px;
+    color: #fff !important;
+    background: #815ef6;
+    padding: 12px 19px;
+    border-radius: 3px;
+    text-transform: capitalize;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    margin-left: 6px;
+}
+
 .invoice-buttons a:hover {
     background: #574494;
 }

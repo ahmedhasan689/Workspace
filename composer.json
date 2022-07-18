@@ -11,7 +11,10 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "yoeunes/toastr": "^1.2"
+        "livewire/livewire": "^2.10",
+        "paypal/paypal-checkout-sdk": "^1.0",
+        "yoeunes/toastr": "^1.2",
+      "ext-json": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

@@ -42,18 +42,28 @@ class TainentController extends Controller
     {
         $workspace = Workspace::where('id', $request->workspace_id)->first();
 
+        $tainents = Tainant::where('workspace_id', $workspace->id)->first();
+
         $start = Carbon::createFromFormat('Y-m-d', $request->start_date);
         $end = Carbon::createFromFormat('Y-m-d', $request->end_date);
         $diff_in_days = $start->diffInDays($end);
-        Tainant::create([
-            'workspace_id' => $request->workspace_id,
-            'owner_id' => $request->owner_id,
-            'user_id' => Auth::guard(session('guardName'))->user()->id,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
-            'total' => $diff_in_days * $workspace->price,
-            'per_day' => $workspace->price,
-        ]);
+
+        if ( $tainents->remaining_days == 0 ) {
+            Tainant::create([
+                'workspace_id' => $request->workspace_id,
+                'owner_id' => $request->owner_id,
+                'user_id' => Auth::guard(session('guardName'))->user()->id,
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
+                'total' => $diff_in_days * $workspace->price,
+                'remaining_days' => $diff_in_days,
+                'per_day' => $workspace->price,
+            ]);
+        }else {
+            toastr()->error('The office is currently booked');
+
+            return redirect()->back();
+        }
 
         $workspace->update([
             'status' => 'booked',

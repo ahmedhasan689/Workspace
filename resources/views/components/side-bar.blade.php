@@ -33,7 +33,7 @@
                             </span>
                         </a>
                     </li>
-                    <li @if (Request::is('tainent/index')) class="active" @endif>
+                    <li @if (Request::is('tainent')) class="active" @endif>
                         <a href="{{ route('tainent.index') }}" aria-expanded="true">
                             <i class="ti-calendar"></i>
                             <span>
@@ -41,8 +41,8 @@
                             </span>
                         </a>
                     </li>
-                    <li>
-                        <a href="javascript:void(0)" aria-expanded="true">
+                    <li @if (Request::is('owner/calendar')) class="active" @endif>
+                        <a href="{{ route('calendar.index') }}" aria-expanded="true">
                             <i class="ti-calendar"></i>
                             <span>
                                 calender

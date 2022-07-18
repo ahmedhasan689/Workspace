@@ -24,272 +24,329 @@
 	</head>
 	<body id="top">
 
-
         <header id="navigation" class="navbar-fixed-top animated-header">
             <div class="container">
                 <div class="navbar-header">
                     <!-- responsive nav button -->
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="sr-only">Desktops.</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Desktops.</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
                     </button>
-					<!-- /responsive nav button -->
+                    <!-- /responsive nav button -->
 
-					<!-- logo -->
-					<h1 class="navbar-brand">
-						<a href="#body">
-                            <img src="{{ asset('front/img/nvnLogo.svg') }}" height="50" width="164" alt="">
-                        </a>
-					</h1>
-					<!-- /logo -->
+                    <!-- logo -->
+                    <h1 class="navbar-brand">
+                        <a href="#body"><img src="{{ asset('front/img/nvnLogo.svg') }}" height="50" width="164" alt=""></a>
+                    </h1>
+                    <!-- /logo -->
                 </div>
 
-				<!-- main nav -->
+                <!-- main nav -->
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
                     <ul id="nav" class="nav navbar-nav menu">
-                        <li>
-                            <a href="#top">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#features">
-                                Service
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#blog">
-                                Rental Type
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#about">
-                                About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#contact-form">
-                                Contact
-                            </a>
-                        </li>
+                        <li><a href="#top">Home</a></li>
+                        <li><a href="#features">Service</a></li>
+                        <li><a href="#blog">Rental Type</a></li>
+                        <li><a href="#map">Map</a></li>
+                        <li><a href="#about">Abou Us</a></li>
+                        <li><a href="#contact-form">Contact</a></li>
                     </ul>
                 </nav>
-				<!-- /main nav -->
+                <!-- /main nav -->
 
             </div>
         </header>
 
 
-	<div class="wrapper">
-		<section id="banner">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="block">
-							<h1>Desktops Rental Website</h1>
-							<h2>Whatever your business,Whateveryour budget
-                                <br> We'll help you to find the right workspace.</h2>
-							<div class="buttons">
-								<a href="{{ route('login', ['type' => 'customer']) }}" class="btn btn-learn">Login</a>
-								<a href="{{ route('register', ['type' => 'customer']) }}" class="btn btn-learn">Register</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="scrolldown">
-	            <a id="scroll" href="#features" class="scroll"></a>
-	        </div>
-		</section>
-		<section id="features">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="title">
-							<h2>OUR BEST SERVICES</h2>
-							<p>The services we provide in Desktops</p>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4 col-xs-6 col-sm-6">
-						<div class="feature-block text-center">
-							<div class="icon-box">
-								<i class="ion-cash"></i>
-							</div>
-							<h4 class="wow fadeInUp" data-wow-delay=".3s">All-inclusive pricing</h4>
-							<p class="wow fadeInUp" data-wow-delay=".5s">Anything you would like to write about this topic<br> here</p>
-						</div>
-					</div>
-					<div class="col-md-4 col-xs-6 col-sm-6">
-						<div class="feature-block text-center">
-							<div class="icon-box">
-								<i class="ion-cube"></i>
-							</div>
-							<h4 class="wow fadeInUp" data-wow-delay=".3s">Furnished offices</h4>
-							<p class="wow fadeInUp" data-wow-delay=".5s">Anything you would like to write about this topic<br> here</p>
-						</div>
-					</div>
-					<div class="col-md-4 col-xs-6 col-sm-6">
-						<div class="feature-block text-center">
-							<div class="icon-box">
-								<i class="ion-clock"></i>
-							</div>
-							<h4 class="wow fadeInUp" data-wow-delay=".3s">Temporary offices</h4>
-							<p class="wow fadeInUp" data-wow-delay=".5s">Anything you would like to write about this topic<br> here</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+        <div class="wrapper">
+            <section id="banner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="block">
+                                <h1>Desktops Rental Website</h1>
+                                <h2>Whatever your business,Whateveryour budget<br> We'll help you to find the right workspace.</h2>
+                                <div class="buttons">
+                                    <a href="{{ route('login', ['type' => 'customer']) }}" class="btn btn-learn">Login</a>
+                                    <a href="{{ route('register', ['type' => 'customer']) }}" class="btn btn-learn">Register</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scrolldown">
+                    <a id="scroll" href="#features" class="scroll"></a>
+                </div>
+            </section>
+            <section id="features">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="title">
+                                <h2>OUR BEST SERVICES</h2>
+                                <p>The services we provide in Desktops</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-xs-6 col-sm-6">
+                            <div class="feature-block text-center">
+                                <div class="icon-box">
+                                    <i class="ion-cash"></i>
+                                </div>
+                                <h4 class="wow fadeInUp" data-wow-delay=".3s">All-inclusive pricing</h4>
+                                <p class="wow fadeInUp" data-wow-delay=".5s">Anything you would like to write about this topic<br> here</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-6 col-sm-6">
+                            <div class="feature-block text-center">
+                                <div class="icon-box">
+                                    <i class="ion-cube"></i>
+                                </div>
+                                <h4 class="wow fadeInUp" data-wow-delay=".3s">Furnished offices</h4>
+                                <p class="wow fadeInUp" data-wow-delay=".5s">Anything you would like to write about this topic<br> here</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-6 col-sm-6">
+                            <div class="feature-block text-center">
+                                <div class="icon-box">
+                                    <i class="ion-clock"></i>
+                                </div>
+                                <h4 class="wow fadeInUp" data-wow-delay=".3s">Temporary offices</h4>
+                                <p class="wow fadeInUp" data-wow-delay=".5s">Anything you would like to write about this topic<br> here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-		<section id="blog">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="title">
-							<h2>Rental Type</h2>
-						</div>
-						<div id="blog-post" class="owl-carousel">
-                            @foreach ($workspaces as $workspace)
-                            <div>
-								<div class="block">
-									<img src="{{ asset('gallery'). '/' . $workspace->gallery[0] }}" alt="" class="img-responsive">
-									<div class="content">
-										<h4>
-                                            <a href="blog.html">
-                                                {{ $workspace->name }}
+            <section id="blog">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="title">
+                                <h2>Rental Type</h2>
+                            </div>
+                            <div id="blog-post" class="owl-carousel">
+                                @foreach ($workspaces as $workspace)
+                                    <div>
+                                        <div class="block">
+                                            <img src="{{ asset('gallery'). '/' . $workspace->gallery[0] }}" alt="" class="img-responsive">
+                                            <div class="content">
+                                                <h4>
+                                                    <a href="blog.html">
+                                                        {{ $workspace->name }}
+                                                    </a>
+                                                </h4>
+                                                <p>
+                                                    {{ $workspace->description }}
+                                                </p>
+                                                <a href="{{ route('my-workspaces.specificWorkspace', ['id' => $workspace->id]) }}" class="btn btn-read">
+                                                    Show more
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="portfolio">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="title">
+                                <h2>Our locations</h2>
+                                <p>We are already very present in these cities<br>use our website to find your right place</p>
+                            </div>
+                            <div class="block">
+                                <div class="recent-work-pic">
+                                    <ul id="mixed-items">
+                                        <li class="mix category-1 col-md-4 col-xs-6" data-my-order="1">
+                                            <a class="example-image-link" href="#" >
+                                                <img class="img-responsive" src="img/blog-1.jpg" alt="">
+                                                <div class="overlay">
+                                                    <h3>Gaza</h3>
+
+                                                </div>
                                             </a>
-                                        </h4>
-										<p>
-                                            {{ $workspace->description }}
-										</p>
-										<a href="blog.html" class="btn btn-read">
-                                            Show more
-                                        </a>
-									</div>
-								</div>
-							</div>
-                            @endforeach
+                                        </li>
+                                        <li class="mix category-2 col-md-4 col-xs-6" data-my-order="2">
+                                            <a class="example-image-link" href="#" >
+                                                <img class="img-responsive" src="img/blog-2.jpg" alt="">
+                                                <div class="overlay">
+                                                    <h3>Rafah</h3>
+
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="mix category-1 col-md-4 col-xs-6" data-my-order="3">
+                                            <a class="example-image-link" href="#" >
+                                                <img class="img-responsive" src="img/blog-3.jpg" alt="">
+                                                <div class="overlay">
+                                                    <h3>KhanYounis</h3>
+
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="mix category-2 col-md-4 col-xs-6" data-my-order="4">
+                                            <a class="example-image-link" href="#" >
+                                                <img class="img-responsive" src="img/blog-4.jpg" alt="">
+                                                <div class="overlay">
+                                                    <h3>Alzahra</h3>
+
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="mix category-1 col-md-4 col-xs-6" data-my-order="5">
+                                            <a class="example-image-link" href="#" >
+                                                <img class="img-responsive" src="img/blog-5.jpg" alt="">
+                                                <div class="overlay">
+                                                    <h3>NorthGaza</h3>
+
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="mix category-2 col-md-4 col-xs-6" data-my-order="6">
+                                            <a class="example-image-link" href="#" >
+                                                <img class="img-responsive" src="img/blog-2.jpg" alt="">
+                                                <div class="overlay">
+                                                    <h3>Gaza</h3>
+
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="map">
+                <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
+                    <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                            style="border:0" allowfullscreen></iframe>
+                </div>
+            </section>
 
 
-							<div>
-								<div class="block">
-									<img src="{{ asset('front/img/blog/blog-2.jpg') }}" alt="" class="img-responsive">
-									<div class="content">
-										<h4>
-                                            <a href="blog.html">Standard office</a>
-                                        </h4>
-										<p>
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ex itaque repudiandae nihil qui debitis atque necessitatibus aliquam, consequuntur autem!
-										</p>
-										<a href="blog.html" class="btn btn-read">Show more</a>
+            <section id="about">
+                <div class="container">
+                    <div class="row">
+                        <div class="title">
+                            <h2>About Us</h2>
+                            <p>Anything that explanation our project desktops idea <br>Anything Anything</p>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- map -->
+                            <div class="img">
+                                <div id="img">
+                                    <img  width="100%" height="100%" src="https://d1tm14lrsghf7q.cloudfront.net/public/media/48795/conversions/Simple20-thumb.jpg">
 
-									</div>
-								</div>
-							</div>
+                                </div>
+                            </div>
 
-							<div>
-								<div class="block">
-									<img src="{{ asset('front/img/blog/blog-3.jpg') }}" alt="" class="img-responsive">
-									<div class="content">
-										<h4><a href="blog.html">Whole building office</a></h4>
-										<p>
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ex itaque repudiandae nihil qui debitis atque necessitatibus aliquam, consequuntur autem!
-										</p>
-										<a href="blog.html" class="btn btn-read">Show more</a>
+                        </div>
+                        <div class="col-md-6">
+                            <p>
+                                From the graduation research report, Show what the idea is, and explain it here 👇<br> Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text.
+                                From the graduation research report, Show what the idea is, and explain it here 👇<br> Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text.
+                                From the graduation research report, Show what the idea is, and explain it here 👇<br> Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the standard dummy text.
 
-									</div>
-								</div>
-							</div>
-							<div>
-								<div class="block">
-									<img src="{{ asset('front/img/blog/blog-1.jpg') }}" alt="" class="img-responsive">
-									<div class="content">
-										<h4><a href="blog.html">meeting rooms</a></h4>
-										<p>
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ex itaque repudiandae nihil qui debitis atque necessitatibus aliquam, consequuntur autem!
-										</p>
-										<a href="blog.html" class="btn btn-read">Show more</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-									</div>
-								</div>
-							</div>
-							<div>
-								<div class="block">
-									<img src="{{ asset('front/img/blog/blog-5.jpg') }}" alt="" class="img-responsive">
-									<div class="content">
-										<h4><a href="blog.html">Training rooms</a></h4>
-										<p>
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ex itaque repudiandae nihil qui debitis atque necessitatibus aliquam, consequuntur autem!
-										</p>
-										<a href="blog.html" class="btn btn-read">Show more</a>
+            <section id="contact-form">
+                <div class="container">
+                    <div class="row">
+                        <div class="title">
+                            <h2>CONTACT US</h2>
+                            <p>We are ready to hear what you want to tell us. 😁
 
-									</div>
-								</div>
-							</div>
+                                <br> From Here 👇</p>
+                        </div>
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+                        <div class="col-md-6" style="margin-left:300px">
+                            <form >
+                                <input type="text" class="form-control" placeholder="Name">
+                                <input type="text" class="form-control" placeholder="Email">
+                                <textarea class="form-control" rows="3" placeholder="Message"></textarea>
+                                <button class="btn btn-default" type="submit">SEND</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
+            <section class="footers bg-light pt-5 pb-3 mb-4">
+                <br><br>
+                <div class="container pt-5">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-4 footers-one">
+                            <div class="footers-logo">
+                                <img src="img/nvnLogo.svg" alt="Logo" style="width:120px;">
+                            </div>
+                            <Br>
+                            <div class="footers-info mt-3">
+                                <p>From the graduation research report, Show what the idea is, and explain it here</p>
+                            </div>
+                            <br>
+                            <div class="social-icons p-1">
+                                <a href="https://www.facebook.com/"><i id="social-fb" class="fa fa-facebook-square fa-2x social"></i></a>
+                                <a href="https://twitter.com/"><i id="social-tw" class="fa fa-twitter-square fa-2x social"></i></a>
+                                <a href="https://plus.google.com/"><i id="social-gp" class="fa fa-google-plus-square fa-2x social"></i></a>
+                                <a href="gmail@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-2x social"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-10 col-sm-6 col-md-2 footers-two">
 
-		<section id="about">
-			<div class="container">
-				<div class="row">
-					<div class="title">
-						<h2>About Us</h2>
-						<p>Anything that explanation our project desktops idea <br>Anything Anything</p>
-					</div>
-					<div class="container">
-						<p>
-							From the graduation research report, Show what the idea is, and explain it here 👇<br> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text.
-						</p>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section id="contact-form">
-			<div class="container">
-				<div class="row">
-					<div class="title">
-						<h2>CONTACT US</h2>
-						<p>We are ready to hear what you want to tell us. 😁
-
-							<br> From Here 👇</p>
-					</div>
-
-					<div class="col-md-6" style="margin-left:300px">
-						<form >
-                            <input type="text" class="form-control" placeholder="Name">
-                            <input type="text" class="form-control" placeholder="Email">
-                            <textarea class="form-control" rows="3" placeholder="Message"></textarea>
-                            <button class="btn btn-default" type="submit">SEND</button>
-                        </form>
-					</div>
-				</div>
-			</div>
-		</section>
-		<footer>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="block">
-							<a href="#">
-                                <img src="{{ asset('front/img/logo.png') }}" alt="">
-                            </a>
-							<p>All rights reserved ©</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-	</div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-2 footers-two">
+                            <h5>Essentials </h5>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Search</a></li>
+                                <li><a href="#">Sell your Car</a></li>
+                                <li><a href="#">Advertise with us</a></li>
+                                <li><a href="#">Dealers Portal</a></li>
+                                <li><a href="#">Post Requirements</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-2 footers-three">
+                            <h5>Information </h5>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Register Now</a></li>
+                                <li><a href="#">Advice</a></li>
+                                <li><a href="#">Videos</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Services</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-2 footers-four">
+                            <h5>Explore </h5>
+                            <ul class="list-unstyled">
+                                <li><a href="#">News</a></li>
+                                <li><a href="#">Sitemap</a></li>
+                                <li><a href="#">Testimonials</a></li>
+                                <li><a href="#">Feedbacks</a></li>
+                                <li><a href="#">User Agreement</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <br> <br>
+            </section>
+        </div>
 
 		<!-- load Js -->
 		<script src="{{ asset('front/js/jquery-1.11.3.min.js') }}"></script>

@@ -94,4 +94,10 @@ class CustomerWorkspaceController extends Controller
             'days' => $request->days,
         ]);
     }
+
+    public function specificWorkspace($id)
+    {
+        $workspace = Workspace::findOrFail($id);
+        return view('customer.workspace.specific_workspace', compact('workspace'));
+    }
 }

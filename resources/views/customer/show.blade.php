@@ -124,6 +124,7 @@
                                 </div>
                                 <div class="invoice-buttons text-right">
                                     <button type="submit" class="invoice-btn" id="rent-submit">Rent Now</button>
+                                    <a href="{{ route('my-workspaces.index') }}" type="button" class="invoice-btn" id="rent-submit">Back</a>
                                 </div>
                             </form>
                         </div>
