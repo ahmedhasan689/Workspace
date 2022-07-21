@@ -20,6 +20,14 @@
                             <span>MyWorkSpaces</span>
                         </a>
                     </li>
+
+                    <li @if ( Request::is('customer/my-tainents') ) class="active" @endif>
+                        <a href="{{ route('my-tainents.index') }}" aria-expanded="true">
+                            <i class="ti-list-ol"></i>
+                            <span>My Tainents</span>
+                        </a>
+                    </li>
+
                     <li @if ( Request::is('customer/settings') ) class="active" @endif>
                         <a href="{{ route('customer.setting.edit') }}" aria-expanded="true">
                             <i class="ti-settings"></i>

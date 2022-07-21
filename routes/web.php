@@ -1,17 +1,17 @@
 <?php
 
-use App\Http\Controllers\Customer\CustomerSettingsController;
-use App\Http\Controllers\Owner\CalendarController;
-use App\Http\Controllers\Owner\TainentController;
-use App\Http\Controllers\Payment\PaypalController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Customer\CustomerController;
-use App\Http\Controllers\Customer\CustomerWorkspaceController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ImageController;
 use App\Http\Controllers\Owner\OwnerController;
+use App\Http\Controllers\Owner\TainentController;
+use App\Http\Controllers\Owner\CalendarController;
 use App\Http\Controllers\Owner\SettingsController;
+use App\Http\Controllers\Payment\PaypalController;
 use App\Http\Controllers\Owner\WorkspacesController;
+use App\Http\Controllers\Customer\CustomerController;
+use App\Http\Controllers\Customer\CustomerSettingsController;
+use App\Http\Controllers\Customer\CustomerTainentsController;
+use App\Http\Controllers\Customer\CustomerWorkspaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,6 +103,16 @@ Route::namespace('/Customer')
     });
     // End Customer Workspace
 
+    // Start Customer Tainents
+    Route::group([
+        'prefix' => 'my-tainents',
+        'as' => 'my-tainents.',
+    ], function() {
+        Route::get('/', [CustomerTainentsController::class, 'index'])->name('index');
+    });
+    // End Customer Tainents
+
+
     // Start Customer Workspace
     Route::group([
         'prefix' => '/settings',
@@ -127,7 +137,8 @@ Route::group([
     Route::delete('/{id}', [TainentController::class, 'destroy'])->name('delete');
 });
 // End Tainents Route
+
 // Paypal
-Route::get('/payment/{total}/{id}/create', [PaypalController::class, 'CreatePayment'])->name('CreatePayment');
+Route::get('/payment/{tainent}/create', [PaypalController::class, 'CreatePayment'])->name('CreatePayment');
 Route::get('/payment/callback', [PaypalController::class, 'callback'])->name('CallbackPayment');
 Route::get('/payment/cancel', [PaypalController::class, 'cancel'])->name('CancelPayment');

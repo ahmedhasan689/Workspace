@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Payment;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Owner\TainentController;
 use App\Models\Tainant;
 use App\Models\Workspace;
 use Carbon\Carbon;
@@ -26,18 +27,19 @@ class PaypalController extends Controller
         $this->client = App::make('paypal.client');
     }
 
-    public function createPayment($total, $id)
+    public function createPayment($tainent)
     {
+        $object = Tainant::findOrFail($tainent);
 
         $request = new OrdersCreateRequest();
         $request->prefer('return=representation');
         $request->body = [
             "intent" => "CAPTURE",
             "purchase_units" => [[
-                "reference_id" => "test_ref_id1",
+                "reference_id" => $object->id,
                 "amount" => [
-                    "value" => $total,
-                    "currency_code" => "USD",
+                    "value" => $object->total,
+                    "currency_code" => "ILS",
                 ],
             ]],
             "application_context" => [
@@ -50,7 +52,6 @@ class PaypalController extends Controller
             // Call API with your client and get a response for your call
             $response = $this->client->execute($request);
 
-            dd($response);
             if($response && $response->statusCode == 201) {
                 $links = collect($response->result->links);
 
@@ -79,52 +80,25 @@ class PaypalController extends Controller
 
             $response = $this->client->execute($request);
 
-            dd($response);
-//            if($response && $response->statusCode == 201) {
-//                foreach($response->result->purchase_units as $unit){
-//                    $workspace = $unit->amount->workspace;
-//
-//                    dd($workspace);
-//                };
-//
-//                $workspace = Workspace::where('id', $request->workspace_id)->first();
-//
-//                $tainents = Tainant::where('workspace_id', $workspace->id)->first();
-//
-//                $start = Carbon::createFromFormat('Y-m-d', $request->start_date);
-//                $end = Carbon::createFromFormat('Y-m-d', $request->end_date);
-//                $diff_in_days = $start->diffInDays($end);
-//
-//                if ( $tainents->remaining_days == 0 ) {
-//                    Tainant::create([
-//                        'workspace_id' => $request->workspace_id,
-//                        'owner_id' => $request->owner_id,
-//                        'user_id' => Auth::guard(session('guardName'))->user()->id,
-//                        'start_date' => $request->start_date,
-//                        'end_date' => $request->end_date,
-//                        'total' => $diff_in_days * $workspace->price,
-//                        'remaining_days' => $diff_in_days,
-//                        'per_day' => $workspace->price,
-//                    ]);
-//                }else {
-//                    toastr()->error('The office is currently booked');
-//
-//                    return redirect()->back();
-//                }
-//
-//                $workspace->update([
-//                    'status' => 'booked',
-//                ]);
-//
-//                toastr()->success('Done !');
-//
-//                $tainents = Tainant::where('user_id', Auth::guard(session('guardName'))->user()->id)->get();
-//                return view('customer.workspace.index', compact('tainents'));
+            $collection = collect($response->result->purchase_units);
+            if($response && $response->statusCode == 201) {
 
-//                return redirect()->route('my-workspaces.index');
-//            }
-            // If call returns body in response, you can get the deserialized version from the result attribute of the response
-//            dd($response);
+                $collections = collect($response->result->purchase_units);
+                foreach($collections as $collection) {
+                    $tainents = Tainant::where('id', $collection->reference_id)->get();
+
+                    foreach($tainents as $tainent) {
+                        $tainent->update([
+                            'status' => 'Paid',
+                        ]);
+                    }
+
+
+
+                   return redirect()->route('my-tainents.index');
+                }
+           }
+        // If call returns body in response, you can get the deserialized version from the result attribute of the response
         }catch (HttpException $ex) {
             echo $ex->statusCode;
             print_r($ex->getMessage());
